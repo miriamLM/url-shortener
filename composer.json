@@ -37,7 +37,7 @@
     },
     "autoload": {
         "psr-4": {
-            "CodelyTv\\PhpBootstrap\\": "src/"
+            "LaSalle\\UrlShortener\\MiriamLopez\\": "src/"
         }
     },
     "autoload-dev": {
