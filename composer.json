@@ -24,7 +24,9 @@
         }
     ],
     "require": {
-        "php": ">=7.2"
+        "php": ">=7.2",
+        "guzzlehttp/guzzle": "~6.0",
+        "ext-json": "*"
     },
     "require-dev": {
         "jakub-onderka/php-parallel-lint": "^1.0",
