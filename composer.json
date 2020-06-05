@@ -40,11 +40,6 @@
             "LaSalle\\UrlShortener\\MiriamLopez\\": "src/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "CodelyTv\\PhpBootstrapTest\\": "tests/"
-        }
-    },
     "minimum-stability": "stable",
     "config": {
         "optimize-autoloader": true
