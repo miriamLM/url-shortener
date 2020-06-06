@@ -4,10 +4,15 @@ declare(strict_types=1);
 
 namespace LaSalle\UrlShortener\MiriamLopez\UrlShortener\ApplicationService;
 
+use LaSalle\UrlShortener\MiriamLopez\UrlShortener\Domain\UrlShortenerRepository;
+
 final class UrlShortenerService
 {
-    public function __construct()
+    private UrlShortenerRepository $urlShortenerRepository;
+
+    public function __construct(UrlShortenerRepository $urlShortenerRepository)
     {
+        $this->urlShortenerRepository = $urlShortenerRepository;
     }
 
     public function __invoke()
