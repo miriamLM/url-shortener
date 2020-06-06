@@ -15,7 +15,8 @@ final class UrlShortenerService
         $this->urlShortenerRepository = $urlShortenerRepository;
     }
 
-    public function __invoke()
+    public function __invoke(string $entryUrl): string
     {
+        return $this->urlShortenerRepository->urlShorten($entryUrl);
     }
 }
