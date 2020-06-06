@@ -8,7 +8,8 @@ use LaSalle\UrlShortener\MiriamLopez\UrlShortener\Domain\UrlShortenerRepository;
 
 final class BitlyAPIUrlShortenerRepository implements UrlShortenerRepository
 {
-    public function urlShorten()
+
+    public function urlShorten(string $entryUrl): string
     {
     }
 }
