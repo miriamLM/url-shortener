@@ -15,7 +15,8 @@ final class UrlShortenerCommandController
         $this->urlShortenerService = $urlShortenerService;
     }
 
-    public function __invoke()
+    public function __invoke(string $entryUrl)
     {
+        return $this->urlShortenerService->__invoke($entryUrl);
     }
 }
