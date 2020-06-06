@@ -6,5 +6,5 @@ namespace LaSalle\UrlShortener\MiriamLopez\UrlShortener\Domain;
 
 interface UrlShortenerRepository
 {
-    public function urlShorten();
+    public function urlShorten(string $entryUrl): string;
 }
