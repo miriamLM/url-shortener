@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LaSalle\UrlShortener\MiriamLopez\UrlShortener\ApplicationService;
 
+use LaSalle\UrlShortener\MiriamLopez\UrlShortener\Domain\UrlName;
 use LaSalle\UrlShortener\MiriamLopez\UrlShortener\Domain\UrlShortenerRepository;
 
 final class UrlShortenerService
@@ -15,8 +16,13 @@ final class UrlShortenerService
         $this->urlShortenerRepository = $urlShortenerRepository;
     }
 
-    public function __invoke(string $entryUrl): string
+    public function __invoke(ShortUrlRequest $shortUrlRequest): ShortUrlResponse
     {
-        return $this->urlShortenerRepository->urlShorten($entryUrl);
+        $url = new UrlName($shortUrlRequest->value());
+
+        $shortUrl = $this->urlShortenerRepository->urlShorten($url);
+
+        $shortUrlResponse = new ShortUrlResponse($shortUrl);
+        return $shortUrlResponse;
     }
 }
