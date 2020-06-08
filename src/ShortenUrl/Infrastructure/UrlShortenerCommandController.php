@@ -9,17 +9,17 @@ use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\ApplicationService\ShortenUrlSer
 
 final class UrlShortenerCommandController
 {
-    private ShortenUrlService $urlShortenerService;
+    private ShortenUrlService $shortenUrlService;
 
-    public function __construct(ShortenUrlService $urlShortenerService)
+    public function __construct(ShortenUrlService $shortenUrlService)
     {
-        $this->urlShortenerService = $urlShortenerService;
+        $this->shortenUrlService = $shortenUrlService;
     }
 
     public function __invoke(string $entryUrl)
     {
         $shortUrlRequest = new ShortUrlRequest($entryUrl);
-        $shortUrlResponse = $this->urlShortenerService->__invoke($shortUrlRequest);
+        $shortUrlResponse = $this->shortenUrlService->__invoke($shortUrlRequest);
         return $shortUrlResponse->value();
     }
 }
