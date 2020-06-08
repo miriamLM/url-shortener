@@ -7,11 +7,11 @@ namespace LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure;
 use GuzzleHttp\Exception\ClientException;
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Domain\Exceptions\UrlNotFound;
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Domain\UrlName;
-use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Domain\UrlShortenerRepository;
+use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Domain\ShortenUrlRepository;
 use GuzzleHttp\Client;
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure\Exceptions\BitlyAPIUnavailable;
 
-final class BitlyAPIUrlShortenerRepository implements UrlShortenerRepository
+final class BitlyAPIShortenUrlRepository implements ShortenUrlRepository
 {
 
     public function urlShorten(UrlName $url): string
