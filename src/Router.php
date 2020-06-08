@@ -14,8 +14,8 @@ if (isset($argv)) {
     try {
         $url = count($argv) === 1 ? "" : $argv[1];
         $urlShortenerRepository = new BitlyAPIUrlShortenerRepository();
-        $urlShortenerService = new ShortenUrlService($urlShortenerRepository);
-        $controller = new UrlShortenerCommandController($urlShortenerService);
+        $shortenUrlService = new ShortenUrlService($urlShortenerRepository);
+        $controller = new UrlShortenerCommandController($shortenUrlService);
         echo $controller($url) . "\n";
     } catch (RuntimeException $exception) {
         $exceptionToHumanMessage = new ExceptionToHumanMessage();
