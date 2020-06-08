@@ -16,15 +16,15 @@ final class UrlName
         $this->checkUrlValid();
     }
 
-    public function value(): string
-    {
-        return $this->url;
-    }
-
     public function checkUrlValid()
     {
         if (!isset($this->url) || $this->url === '') {
             throw new EmptyUrl();
         }
+    }
+
+    public function value(): string
+    {
+        return $this->url;
     }
 }
