@@ -7,7 +7,7 @@ namespace LaSalle\UrlShortener\MiriamLopez\ShortenUrl\ApplicationService;
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Domain\UrlName;
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Domain\ShortenUrlRepository;
 
-final class ShortenUrlService
+final class UrlShortenService
 {
     private ShortenUrlRepository $urlShortenerRepository;
 
