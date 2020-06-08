@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure;
 
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\ApplicationService\ShortUrlRequest;
-use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\ApplicationService\UrlShortenerService;
+use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\ApplicationService\ShortenUrlService;
 
 final class UrlShortenerCommandController
 {
-    private UrlShortenerService $urlShortenerService;
+    private ShortenUrlService $urlShortenerService;
 
-    public function __construct(UrlShortenerService $urlShortenerService)
+    public function __construct(ShortenUrlService $urlShortenerService)
     {
         $this->urlShortenerService = $urlShortenerService;
     }
