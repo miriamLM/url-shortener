@@ -3,9 +3,9 @@
 
 namespace LaSalle\UrlShortener\MiriamLopez\Shared\Infrastructure\Exceptions;
 
-use LaSalle\UrlShortener\MiriamLopez\UrlShortener\Domain\Exceptions\EmptyUrl;
-use LaSalle\UrlShortener\MiriamLopez\UrlShortener\Domain\Exceptions\UrlNotFound;
-use LaSalle\UrlShortener\MiriamLopez\UrlShortener\Infrastructure\Exceptions\BitlyAPIUnavailable;
+use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Domain\Exceptions\EmptyUrl;
+use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Domain\Exceptions\UrlNotFound;
+use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure\Exceptions\BitlyAPIUnavailable;
 
 final class ExceptionToHumanMessage
 {
