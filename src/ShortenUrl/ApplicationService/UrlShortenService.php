@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace LaSalle\UrlShortener\MiriamLopez\ShortenUrl\ApplicationService;
 
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Domain\UrlName;
-use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Domain\ShortenUrlRepository;
+use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Domain\UrlShortenerRepository;
 
 final class UrlShortenService
 {
-    private ShortenUrlRepository $urlShortenerRepository;
+    private UrlShortenerRepository $urlShortenerRepository;
 
-    public function __construct(ShortenUrlRepository $urlShortenerRepository)
+    public function __construct(UrlShortenerRepository $urlShortenerRepository)
     {
         $this->urlShortenerRepository = $urlShortenerRepository;
     }
