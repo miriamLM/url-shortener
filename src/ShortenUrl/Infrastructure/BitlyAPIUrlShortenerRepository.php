@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace LaSalle\UrlShortener\MiriamLopez\UrlShortener\Infrastructure;
+namespace LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure;
 
 use GuzzleHttp\Exception\ClientException;
-use LaSalle\UrlShortener\MiriamLopez\UrlShortener\Domain\Exceptions\UrlNotFound;
-use LaSalle\UrlShortener\MiriamLopez\UrlShortener\Domain\UrlName;
-use LaSalle\UrlShortener\MiriamLopez\UrlShortener\Domain\UrlShortenerRepository;
+use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Domain\Exceptions\UrlNotFound;
+use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Domain\UrlName;
+use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Domain\UrlShortenerRepository;
 use GuzzleHttp\Client;
-use LaSalle\UrlShortener\MiriamLopez\UrlShortener\Infrastructure\Exceptions\BitlyAPIUnavailable;
+use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure\Exceptions\BitlyAPIUnavailable;
 
 final class BitlyAPIUrlShortenerRepository implements UrlShortenerRepository
 {

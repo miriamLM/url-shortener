@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace LaSalle\UrlShortener\MiriamLopez\UrlShortener\Infrastructure;
+namespace LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure;
 
-use LaSalle\UrlShortener\MiriamLopez\UrlShortener\ApplicationService\ShortUrlRequest;
-use LaSalle\UrlShortener\MiriamLopez\UrlShortener\ApplicationService\UrlShortenerService;
+use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\ApplicationService\ShortUrlRequest;
+use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\ApplicationService\UrlShortenerService;
 
 final class UrlShortenerCommandController
 {

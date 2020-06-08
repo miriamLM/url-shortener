@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaSalle\UrlShortener\MiriamLopez\UrlShortener\Domain;
+namespace LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Domain;
 
 interface UrlShortenerRepository
 {

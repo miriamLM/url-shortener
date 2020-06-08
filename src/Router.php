@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 use LaSalle\UrlShortener\MiriamLopez\Shared\Infrastructure\Exceptions\ExceptionToHumanMessage;
-use LaSalle\UrlShortener\MiriamLopez\UrlShortener\ApplicationService\UrlShortenerService;
-use LaSalle\UrlShortener\MiriamLopez\UrlShortener\Infrastructure\BitlyAPIUrlShortenerRepository;
-use LaSalle\UrlShortener\MiriamLopez\UrlShortener\Infrastructure\UrlShortenerCommandController;
+use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\ApplicationService\UrlShortenerService;
+use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure\BitlyAPIUrlShortenerRepository;
+use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure\UrlShortenerCommandController;
 
 require_once '../vendor/autoload.php';
 

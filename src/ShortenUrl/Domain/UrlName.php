@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace LaSalle\UrlShortener\MiriamLopez\UrlShortener\Domain;
+namespace LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Domain;
 
-use LaSalle\UrlShortener\MiriamLopez\UrlShortener\Domain\Exceptions\EmptyUrl;
+use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Domain\Exceptions\EmptyUrl;
 
 final class UrlName
 {

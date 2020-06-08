@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaSalle\UrlShortener\MiriamLopez\UrlShortener\Infrastructure\Exceptions;
+namespace LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure\Exceptions;
 
 use RuntimeException;
 

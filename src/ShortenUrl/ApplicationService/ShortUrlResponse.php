@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaSalle\UrlShortener\MiriamLopez\UrlShortener\ApplicationService;
+namespace LaSalle\UrlShortener\MiriamLopez\ShortenUrl\ApplicationService;
 
 final class ShortUrlResponse
 {
