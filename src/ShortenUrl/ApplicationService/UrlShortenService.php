@@ -22,7 +22,6 @@ final class UrlShortenService
 
         $shortUrl = $this->urlShortenerRepository->urlShorten($url);
 
-        $shortUrlResponse = new ShortUrlResponse($shortUrl);
-        return $shortUrlResponse;
+        return new ShortUrlResponse($shortUrl);
     }
 }
