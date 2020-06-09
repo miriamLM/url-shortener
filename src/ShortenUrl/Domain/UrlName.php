@@ -16,7 +16,7 @@ final class UrlName
         $this->checkUrlValid();
     }
 
-    public function checkUrlValid(): void
+    private function checkUrlValid(): void
     {
         if (!isset($this->url) || $this->url === '') {
             throw new EmptyUrl();
