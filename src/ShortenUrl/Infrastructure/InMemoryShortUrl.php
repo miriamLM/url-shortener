@@ -25,4 +25,15 @@ final class InMemoryShortUrl implements UrlShortenerRepository
     public function urlShorten(UrlName $url): string
     {
     }
+
+    public function findShortUrlInBD(UrlName $originalUrl): ?string
+    {
+        $stmt = $this->connectionDB->pdo()->prepare(
+            'SELECT shortUrl FROM shortUrl where originalUrl = :originalUrl'
+        );
+        $stmt->bindValue("originalUrl", $originalUrl->value());
+        $stmt->execute();
+        $shortUrl = $stmt->fetchColumn();
+        return $shortUrl === false ? null : $shortUrl;
+    }
 }
