@@ -19,7 +19,7 @@ if (isset($argv)) {
 
         $urlShortenerRepository = new BitlyAPIUrlShortenerRepository();
         $inMemoryShortUrl = new InMemoryShortUrl($connectionDB, $urlShortenerRepository);
-        $urlShortenService = new UrlShortenService($urlShortenerRepository);
+        $urlShortenService = new UrlShortenService($inMemoryShortUrl);
         $controller = new UrlShortenerCommandController($urlShortenService);
         echo $controller($url) . "\n";
     } catch (RuntimeException $exception) {
