@@ -16,7 +16,9 @@ $connectionDB = new UrlShortenerDBConnection();
 if (isset($argv)) {
     try {
         $url = count($argv) === 1 ? "" : $argv[1];
+
         $urlShortenerRepository = new BitlyAPIUrlShortenerRepository();
+        $inMemoryShortUrl = new InMemoryShortUrl($connectionDB, $urlShortenerRepository);
         $urlShortenService = new UrlShortenService($urlShortenerRepository);
         $controller = new UrlShortenerCommandController($urlShortenService);
         echo $controller($url) . "\n";
