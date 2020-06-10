@@ -36,4 +36,15 @@ final class InMemoryShortUrl implements UrlShortenerRepository
         $shortUrl = $stmt->fetchColumn();
         return $shortUrl === false ? null : $shortUrl;
     }
+
+    public function saveInBD(UrlName $originalUrl, string $shortUrl)
+    {
+        $stmt = $this->connectionDB->pdo()->prepare(
+            'INSERT IGNORE INTO shortUrl(originalUrl, shortUrl, utmCampaign) VALUES (:originalUrl, :shortUrl, :utmCampaign)'
+        );
+        $stmt->bindValue("originalUrl", $originalUrl->value());
+        $stmt->bindValue("shortUrl", $shortUrl);
+        $stmt->bindValue("utmCampaign", $originalUrl->utmCampaignValue());
+        $stmt->execute();
+    }
 }
