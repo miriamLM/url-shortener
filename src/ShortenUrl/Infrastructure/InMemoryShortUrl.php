@@ -21,9 +21,17 @@ final class InMemoryShortUrl implements UrlShortenerRepository
         $this->bitlyAPIUrlShortenerRepository = $bitlyAPIUrlShortenerRepository;
     }
 
-
     public function urlShorten(UrlName $url): string
     {
+        $shortUrlFromBD = $this->findShortUrlInBD($url);
+        if (null !== $shortUrlFromBD) {
+            return $shortUrlFromBD;
+        }
+        $shortUrl = $this->bitlyAPIUrlShortenerRepository->urlShorten($url);
+
+        $this->saveInBD($url, $shortUrl);
+
+        return $shortUrl;
     }
 
     public function findShortUrlInBD(UrlName $originalUrl): ?string
