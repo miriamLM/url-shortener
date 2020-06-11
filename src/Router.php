@@ -27,7 +27,7 @@ if (isset($argv)) {
 
         $dispatcher = new EventDispatcher();
 
-        $inMemoryUrlCounter = new InMemoryUrlCounter();
+        $inMemoryUrlCounter = new InMemoryUrlCounter($connectionDB);
 
         $eventDispatcher = new SymfonyEventDispatcher($dispatcher);
 
