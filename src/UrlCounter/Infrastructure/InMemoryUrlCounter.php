@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LaSalle\UrlShortener\MiriamLopez\UrlCounter\Infrastructure;
 
 use LaSalle\UrlShortener\MiriamLopez\Shared\Infrastructure\UrlShortenerDBConnection;
+use LaSalle\UrlShortener\MiriamLopez\UrlCounter\Domain\Counter;
 use LaSalle\UrlShortener\MiriamLopez\UrlCounter\Domain\UrlCounterRepository;
 use LaSalle\UrlShortener\MiriamLopez\UrlCounter\Domain\UtmCampaign;
 use LaSalle\UrlShortener\MiriamLopez\UrlCounter\Domain\UtmCampaignCounter;
@@ -20,6 +21,17 @@ final class InMemoryUrlCounter implements UrlCounterRepository
 
     public function findByUtmCampaign(UtmCampaign $utmCampaign): ?UtmCampaignCounter
     {
+        $stmt = $this->connectionDB->pdo()->prepare(
+            'SELECT utmCampaign, count FROM urlCounter where utmCampaign = :utmCampaign'
+        );
+        $stmt->bindValue("utmCampaign", $utmCampaign->value());
+        $stmt->execute();
+        $utmCampaignResult = $stmt->fetch();
+
+        return $utmCampaignResult === false ? null : new UtmCampaignCounter(
+            new UtmCampaign($utmCampaignResult['utmCampaign']),
+            new Counter($utmCampaignResult['count'])
+        );
     }
 
     public function save(UtmCampaignCounter $utmCampaignCounter): void
