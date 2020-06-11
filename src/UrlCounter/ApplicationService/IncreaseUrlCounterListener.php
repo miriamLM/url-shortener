@@ -6,6 +6,7 @@ namespace LaSalle\UrlShortener\MiriamLopez\UrlCounter\ApplicationService;
 
 use LaSalle\UrlShortener\MiriamLopez\Shared\Domain\UrlNameCreatedDomainEvent;
 use LaSalle\UrlShortener\MiriamLopez\UrlCounter\Domain\UrlCounterRepository;
+use LaSalle\UrlShortener\MiriamLopez\UrlCounter\Domain\UtmCampaign;
 
 final class IncreaseUrlCounterListener
 {
@@ -18,5 +19,8 @@ final class IncreaseUrlCounterListener
 
     public function increaseUrlCounter(UrlNameCreatedDomainEvent $event)
     {
+        $utmCampign = new UtmCampaign($event->utmCampaignValue());
+        $utmCampaignCounter = $this->urlCounterRepository->findByUtmCampaign($utmCampign);
+
     }
 }
