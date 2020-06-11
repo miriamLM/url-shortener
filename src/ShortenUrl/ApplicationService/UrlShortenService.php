@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LaSalle\UrlShortener\MiriamLopez\ShortenUrl\ApplicationService;
 
+use LaSalle\UrlShortener\MiriamLopez\Shared\Domain\UrlNameCreatedDomainEvent;
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Domain\EventDispatcherInterface;
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Domain\UrlName;
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Domain\UrlShortenerRepository;
@@ -26,6 +27,8 @@ final class UrlShortenService
         $url = new UrlName($shortUrlRequest->value());
 
         $shortUrl = $this->urlShortenerRepository->urlShorten($url);
+
+        $event = new UrlNameCreatedDomainEvent($url->value(), $url->utmCampaignValue());
 
         return new ShortUrlResponse($shortUrl);
     }
