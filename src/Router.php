@@ -9,6 +9,8 @@ use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure\BitlyAPIUrlShorte
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure\InMemoryShortUrl;
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure\SymfonyEventDispatcher;
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure\UrlShortenerCommandController;
+use LaSalle\UrlShortener\MiriamLopez\UrlCounter\ApplicationService\IncreaseUrlCounterListener;
+use LaSalle\UrlShortener\MiriamLopez\UrlCounter\Infrastructure\InMemoryUrlCounter;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
 require_once '../vendor/autoload.php';
@@ -25,8 +27,13 @@ if (isset($argv)) {
 
         $dispatcher = new EventDispatcher();
 
+        $inMemoryUrlCounter = new InMemoryUrlCounter();
+
         $eventDispatcher = new SymfonyEventDispatcher($dispatcher);
 
+        $listener = new IncreaseUrlCounterListener($inMemoryUrlCounter);
+        $dispatcher->addListener('url.name.created.event', array($listener, 'increaseUrlCounter'));
+        /**/
         $urlShortenService = new UrlShortenService($inMemoryShortUrl, $eventDispatcher);
 
         $controller = new UrlShortenerCommandController($urlShortenService);
