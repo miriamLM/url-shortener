@@ -17,4 +17,9 @@ final class Counter
     {
         return $this->count;
     }
+
+    public function increment(): self
+    {
+        return new self($this->count + 1);
+    }
 }
