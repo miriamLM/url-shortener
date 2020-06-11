@@ -33,7 +33,7 @@ if (isset($argv)) {
 
         $listener = new IncreaseUrlCounterListener($inMemoryUrlCounter);
         $dispatcher->addListener('url.name.created.event', array($listener, 'increaseUrlCounter'));
-        /**/
+
         $urlShortenService = new UrlShortenService($inMemoryShortUrl, $eventDispatcher);
 
         $controller = new UrlShortenerCommandController($urlShortenService);
