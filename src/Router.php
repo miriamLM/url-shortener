@@ -7,7 +7,9 @@ use LaSalle\UrlShortener\MiriamLopez\Shared\Infrastructure\UrlShortenerDBConnect
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\ApplicationService\UrlShortenService;
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure\BitlyAPIUrlShortenerRepository;
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure\InMemoryShortUrl;
+use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure\SymfonyEventDispatcher;
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure\UrlShortenerCommandController;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 
 require_once '../vendor/autoload.php';
 
@@ -18,8 +20,15 @@ if (isset($argv)) {
         $url = count($argv) === 1 ? "" : $argv[1];
 
         $urlShortenerRepository = new BitlyAPIUrlShortenerRepository();
+
         $inMemoryShortUrl = new InMemoryShortUrl($connectionDB, $urlShortenerRepository);
-        $urlShortenService = new UrlShortenService($inMemoryShortUrl);
+
+        $dispatcher = new EventDispatcher();
+
+        $eventDispatcher = new SymfonyEventDispatcher($dispatcher);
+
+        $urlShortenService = new UrlShortenService($inMemoryShortUrl, $eventDispatcher);
+
         $controller = new UrlShortenerCommandController($urlShortenService);
         echo $controller($url) . "\n";
     } catch (RuntimeException $exception) {
