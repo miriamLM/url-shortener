@@ -4,16 +4,21 @@ declare(strict_types=1);
 
 namespace LaSalle\UrlShortener\MiriamLopez\ShortenUrl\ApplicationService;
 
+use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Domain\EventDispatcherInterface;
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Domain\UrlName;
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Domain\UrlShortenerRepository;
 
 final class UrlShortenService
 {
     private UrlShortenerRepository $urlShortenerRepository;
+    private EventDispatcherInterface $eventDispatcher;
 
-    public function __construct(UrlShortenerRepository $urlShortenerRepository)
-    {
+    public function __construct(
+        UrlShortenerRepository $urlShortenerRepository,
+        EventDispatcherInterface $eventDispatcher
+    ) {
         $this->urlShortenerRepository = $urlShortenerRepository;
+        $this->eventDispatcher = $eventDispatcher;
     }
 
     public function __invoke(ShortUrlRequest $shortUrlRequest): ShortUrlResponse
