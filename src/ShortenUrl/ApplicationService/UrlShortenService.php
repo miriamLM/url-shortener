@@ -29,6 +29,7 @@ final class UrlShortenService
         $shortUrl = $this->urlShortenerRepository->urlShorten($url);
 
         $event = new UrlNameCreatedDomainEvent($url->value(), $url->utmCampaignValue());
+        $this->eventDispatcher->dispatch($event);
 
         return new ShortUrlResponse($shortUrl);
     }
