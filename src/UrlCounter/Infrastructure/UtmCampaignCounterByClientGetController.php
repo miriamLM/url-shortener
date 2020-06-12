@@ -19,9 +19,8 @@ final class UtmCampaignCounterByClientGetController
     public function __invoke(): string
     {
         $utmCampaignCounterResponse = $this->utmCampaignCounterSearcher->__invoke();
-        if (null !== $utmCampaignCounterResponse) {
-            return $this->formatResponse($utmCampaignCounterResponse);
-        }
+
+        return $this->formatResponse($utmCampaignCounterResponse);
     }
 
     private function formatResponse(UtmCampaignCounterResponse $utmCampaignCounterResponse): string
