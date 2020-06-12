@@ -25,7 +25,7 @@ final class UtmCampaignCounter
         return $this->counter;
     }
 
-    public function count(): Counter
+    private function count(): Counter
     {
         return new Counter($this->counter->value());
     }
