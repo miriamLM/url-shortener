@@ -58,7 +58,8 @@ final class InMemoryUrlCounter implements UrlCounterRepository
             'SELECT utmCampaign, count FROM urlCounter'
         );
         $stmt->execute();
-        return $stmt->fetchALl();
+        $urlCounterResult = $stmt->fetchALl();
+        return $this->passToObjectArray($urlCounterResult);
     }
 
     public function findTotalCount(): int
@@ -70,5 +71,18 @@ final class InMemoryUrlCounter implements UrlCounterRepository
         $count = $stmt->fetchColumn();
 
         return intval($count);
+    }
+
+    private function passToObjectArray(array $utlCounterResult): array
+    {
+        $utmCampaignCounterArray = [];
+        foreach ($utlCounterResult as $utmCounter) {
+            $utmCampaignCounter = new UtmCampaignCounter(
+                new UtmCampaign($utmCounter['utmCampaign']),
+                new Counter(intval($utmCounter['count']))
+            );
+            array_push($utmCampaignCounterArray, $utmCampaignCounter);
+        }
+        return $utmCampaignCounterArray;
     }
 }
