@@ -22,6 +22,7 @@ final class InMemoryUrlCounter implements UrlCounterRepository
     public function save(UtmCampaignCounter $utmCampaignCounter): void
     {
         $utmCampaign = $this->findByUtmCampaign($utmCampaignCounter->utmCampaign());
+
         if (null === $utmCampaign) {
             $stmt = $this->connectionDB->pdo()->prepare(
                 'INSERT IGNORE INTO urlCounter(utmCampaign, count) VALUES (:utmCampaign, :count)'
@@ -31,6 +32,7 @@ final class InMemoryUrlCounter implements UrlCounterRepository
                 'UPDATE urlCounter SET count = :count WHERE utmCampaign = :utmCampaign'
             );
         }
+
         $stmt->bindValue("utmCampaign", $utmCampaignCounter->utmCampaign()->value());
         $stmt->bindValue("count", $utmCampaignCounter->counter()->value());
 
@@ -42,8 +44,10 @@ final class InMemoryUrlCounter implements UrlCounterRepository
         $stmt = $this->connectionDB->pdo()->prepare(
             'SELECT utmCampaign, count FROM urlCounter where utmCampaign = :utmCampaign'
         );
+
         $stmt->bindValue("utmCampaign", $utmCampaign->value());
         $stmt->execute();
+
         $utmCampaignResult = $stmt->fetch();
 
         return $utmCampaignResult === false ? null : new UtmCampaignCounter(
@@ -68,6 +72,7 @@ final class InMemoryUrlCounter implements UrlCounterRepository
             'SELECT SUM(count) FROM urlCounter'
         );
         $stmt->execute();
+
         $count = $stmt->fetchColumn();
 
         return intval($count);
