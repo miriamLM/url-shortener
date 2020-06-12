@@ -22,6 +22,7 @@ final class IncreaseUrlCounterListener
     public function increaseUrlCounter(UrlNameCreatedDomainEvent $event): void
     {
         $utmCampaign = new UtmCampaign($event->utmCampaignValue());
+
         $utmCampaignCounter = $this->urlCounterRepository->findByUtmCampaign($utmCampaign);
 
         if (null === $utmCampaignCounter) {
