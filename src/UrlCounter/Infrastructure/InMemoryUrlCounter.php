@@ -51,4 +51,19 @@ final class InMemoryUrlCounter implements UrlCounterRepository
             new Counter(intval($utmCampaignResult['count']))
         );
     }
+
+    public function findUtmCampaigns(): ?array
+    {
+    }
+
+    public function findTotalCount(): ?int
+    {
+        $stmt = $this->connectionDB->pdo()->prepare(
+            'SELECT SUM(count), count FROM urlCounter'
+        );
+        $stmt->execute();
+        $count = $stmt->fetchColumn();
+
+        return $count === false ? null : $count;
+    }
 }
