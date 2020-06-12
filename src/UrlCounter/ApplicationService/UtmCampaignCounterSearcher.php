@@ -18,9 +18,11 @@ final class UtmCampaignCounterSearcher
     public function __invoke(): UtmCampaignCounterResponse
     {
         $totalCount = $this->urlCounterRepository->findTotalCount();
+
         if (0 === $totalCount) {
             return new UtmCampaignCounterResponse(0, []);
         }
+
         $utmCampaignArray = $this->urlCounterRepository->findUtmCampaigns();
 
         return new UtmCampaignCounterResponse($totalCount, $utmCampaignArray);
