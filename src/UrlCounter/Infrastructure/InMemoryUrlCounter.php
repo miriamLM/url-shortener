@@ -55,11 +55,22 @@ final class InMemoryUrlCounter implements UrlCounterRepository
     public function findUtmCampaigns(): ?array
     {
         $stmt = $this->connectionDB->pdo()->prepare(
-            'SELECT utmCampaign, count FROM urlCounter'
+            'SELECT utmCampaign, count FROM urlCounter WHERE utmCampaign NOT LIKE ""'
         );
         $stmt->execute();
-        $urlCounterResult = $stmt->fetchALl();
-        return $this->passToObjectArray($urlCounterResult);
+
+        return $stmt->fetchALl();
+    }
+
+    public function findTotalCount(): int
+    {
+        $stmt = $this->connectionDB->pdo()->prepare(
+            'SELECT SUM(count) FROM urlCounter'
+        );
+        $stmt->execute();
+        $count = $stmt->fetchColumn();
+
+        return intval($count);
     }
 
     private function passToObjectArray(array $utlCounterResult): array
@@ -72,17 +83,7 @@ final class InMemoryUrlCounter implements UrlCounterRepository
             );
             array_push($utmCampaignCounterArray, $utmCampaignCounter);
         }
+
         return $utmCampaignCounterArray;
-    }
-
-    public function findTotalCount(): int
-    {
-        $stmt = $this->connectionDB->pdo()->prepare(
-            'SELECT SUM(count) FROM urlCounter'
-        );
-        $stmt->execute();
-        $count = $stmt->fetchColumn();
-
-        return intval($count);
     }
 }
