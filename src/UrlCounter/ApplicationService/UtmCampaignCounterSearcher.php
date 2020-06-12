@@ -15,12 +15,14 @@ final class UtmCampaignCounterSearcher
         $this->urlCounterRepository = $urlCounterRepository;
     }
 
-    public function __invoke(): ?array
+    public function __invoke(): ?UtmCampaignCounterResponse
     {
         $totalCount = $this->urlCounterRepository->findTotalCount();
         if (0 === $totalCount) {
             return null;
         }
-        return $this->urlCounterRepository->findUtmCampaigns();
+        $utmCampaignArray = $this->urlCounterRepository->findUtmCampaigns();
+
+        return new UtmCampaignCounterResponse($totalCount, $utmCampaignArray);
     }
 }
