@@ -8,16 +8,16 @@ use LaSalle\UrlShortener\MiriamLopez\UrlCounter\Domain\Counter;
 
 final class UtmCampaignCounterResponse
 {
-    private Counter $totalCounter;
+    private int $totalCounter;
     private array $utmCampaignCounter;
 
-    public function __construct(Counter $totalCounter, array $utmCampaignCounter)
+    public function __construct(int $totalCounter, array $utmCampaignCounter)
     {
         $this->totalCounter = $totalCounter;
         $this->utmCampaignCounter = $utmCampaignCounter;
     }
 
-    public function totalCounter(): Counter
+    public function totalCounter(): int
     {
         return $this->totalCounter;
     }
