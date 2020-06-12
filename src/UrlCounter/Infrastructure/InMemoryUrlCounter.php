@@ -72,18 +72,4 @@ final class InMemoryUrlCounter implements UrlCounterRepository
 
         return intval($count);
     }
-
-    private function passToObjectArray(array $utlCounterResult): array
-    {
-        $utmCampaignCounterArray = [];
-        foreach ($utlCounterResult as $utmCounter) {
-            $utmCampaignCounter = new UtmCampaignCounter(
-                new UtmCampaign($utmCounter['utmCampaign']),
-                new Counter(intval($utmCounter['count']))
-            );
-            array_push($utmCampaignCounterArray, $utmCampaignCounter);
-        }
-
-        return $utmCampaignCounterArray;
-    }
 }
