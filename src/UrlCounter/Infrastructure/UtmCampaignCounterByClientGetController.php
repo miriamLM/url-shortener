@@ -4,9 +4,18 @@ declare(strict_types=1);
 
 namespace LaSalle\UrlShortener\MiriamLopez\UrlCounter\Infrastructure;
 
+use LaSalle\UrlShortener\MiriamLopez\UrlCounter\ApplicationService\UtmCampaignCounterSearcher;
+
 final class UtmCampaignCounterByClientGetController
 {
-    public function __construct()
+    private UtmCampaignCounterSearcher $utmCampaignCounterSearcher;
+
+    public function __construct(UtmCampaignCounterSearcher $utmCampaignCounterSearcher)
+    {
+        $this->utmCampaignCounterSearcher = $utmCampaignCounterSearcher;
+    }
+
+    public function __invoke()
     {
     }
 }
