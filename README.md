@@ -36,6 +36,13 @@ CREATE TABLE `shortUrl` (
     `utmCampaign` VARCHAR(255),
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+
+CREATE TABLE `urlCounter` ( 
+    `utmCampaign` VARCHAR(255),
+    `count` INT NOT NULL,
+    PRIMARY KEY (`utmCampaign`)
+) ENGINE=InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+
 ```
 
 ### Configuration file to connect to database
