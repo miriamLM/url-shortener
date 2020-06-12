@@ -59,5 +59,5 @@ header("Content-Type: application/json");
 
 if ('/count' === $routeFavorite && 'GET' === $requestMethod) {
     $utmCampaignCounterSearcher = new UtmCampaignCounterSearcher();
-    $controller = new UtmCampaignCounterByClientGetController();
+    $controller = new UtmCampaignCounterByClientGetController($utmCampaignCounterSearcher);
 }
