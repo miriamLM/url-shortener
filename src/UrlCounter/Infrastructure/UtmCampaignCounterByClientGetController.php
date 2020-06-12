@@ -29,9 +29,11 @@ final class UtmCampaignCounterByClientGetController
             "total" => $utmCampaignCounterResponse->totalCounter(),
             "utm_campaigns" => []
         ];
+
         foreach ($utmCampaignCounterResponse->utmCampaignCounter() as $utmCampaign) {
             array_push($result["utm_campaigns"], [$utmCampaign["utmCampaign"] => intval($utmCampaign["count"])]);
         }
+
         return json_encode($result);
     }
 }
