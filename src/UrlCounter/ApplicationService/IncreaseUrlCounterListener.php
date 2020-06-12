@@ -28,7 +28,7 @@ final class IncreaseUrlCounterListener
             $utmCampaignCounter = new UtmCampaignCounter($utmCampaign, new Counter(0));
         }
 
-        $utmCampaignCounter->increase();
+        $utmCampaignCounter = $utmCampaignCounter->increase();
 
         $this->urlCounterRepository->save($utmCampaignCounter);
     }
