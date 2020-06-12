@@ -11,6 +11,7 @@ use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure\SymfonyEventDispa
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure\UrlShortenerCommandController;
 use LaSalle\UrlShortener\MiriamLopez\UrlCounter\ApplicationService\IncreaseUrlCounterListener;
 use LaSalle\UrlShortener\MiriamLopez\UrlCounter\ApplicationService\UtmCampaignCounterSearcher;
+use LaSalle\UrlShortener\MiriamLopez\UrlCounter\Domain\UrlCounterRepository;
 use LaSalle\UrlShortener\MiriamLopez\UrlCounter\Infrastructure\InMemoryUrlCounter;
 use LaSalle\UrlShortener\MiriamLopez\UrlCounter\Infrastructure\UtmCampaignCounterByClientGetController;
 use Symfony\Component\EventDispatcher\EventDispatcher;
@@ -58,6 +59,7 @@ header("Content-Type: application/json");
 
 
 if ('/count' === $routeFavorite && 'GET' === $requestMethod) {
-    $utmCampaignCounterSearcher = new UtmCampaignCounterSearcher();
+    $inMemoryUrlCounter = new InMemoryUrlCounter($connectionDB);
+    $utmCampaignCounterSearcher = new UtmCampaignCounterSearcher($inMemoryUrlCounter);
     $controller = new UtmCampaignCounterByClientGetController($utmCampaignCounterSearcher);
 }
