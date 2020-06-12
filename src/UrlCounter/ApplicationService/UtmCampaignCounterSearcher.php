@@ -6,5 +6,8 @@ namespace LaSalle\UrlShortener\MiriamLopez\UrlCounter\ApplicationService;
 
 final class UtmCampaignCounterSearcher
 {
+    public function __construct()
+    {
+    }
 
 }
