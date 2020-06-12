@@ -24,7 +24,7 @@ Examples:
 CREATE DATABASE `url_shortener` DEFAULT CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 ```
 
-### Create table
+### Create tables
 
 ```SQL
 use `url_shortener`;
