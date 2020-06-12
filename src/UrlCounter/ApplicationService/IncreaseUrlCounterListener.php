@@ -29,5 +29,7 @@ final class IncreaseUrlCounterListener
         }
 
         $utmCampaignCounter->increase();
+
+        $this->urlCounterRepository->save($utmCampaignCounter);
     }
 }
