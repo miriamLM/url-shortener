@@ -54,6 +54,11 @@ final class InMemoryUrlCounter implements UrlCounterRepository
 
     public function findUtmCampaigns(): ?array
     {
+        $stmt = $this->connectionDB->pdo()->prepare(
+            'SELECT utmCampaign, count FROM urlCounter'
+        );
+        $stmt->execute();
+        return $stmt->fetchALl();
     }
 
     public function findTotalCount(): int
