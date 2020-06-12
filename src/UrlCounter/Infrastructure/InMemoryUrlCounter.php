@@ -62,17 +62,6 @@ final class InMemoryUrlCounter implements UrlCounterRepository
         return $this->passToObjectArray($urlCounterResult);
     }
 
-    public function findTotalCount(): int
-    {
-        $stmt = $this->connectionDB->pdo()->prepare(
-            'SELECT SUM(count) FROM urlCounter'
-        );
-        $stmt->execute();
-        $count = $stmt->fetchColumn();
-
-        return intval($count);
-    }
-
     private function passToObjectArray(array $utlCounterResult): array
     {
         $utmCampaignCounterArray = [];
@@ -84,5 +73,16 @@ final class InMemoryUrlCounter implements UrlCounterRepository
             array_push($utmCampaignCounterArray, $utmCampaignCounter);
         }
         return $utmCampaignCounterArray;
+    }
+
+    public function findTotalCount(): int
+    {
+        $stmt = $this->connectionDB->pdo()->prepare(
+            'SELECT SUM(count) FROM urlCounter'
+        );
+        $stmt->execute();
+        $count = $stmt->fetchColumn();
+
+        return intval($count);
     }
 }
