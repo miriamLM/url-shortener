@@ -19,7 +19,7 @@ final class IncreaseUrlCounterListener
         $this->urlCounterRepository = $urlCounterRepository;
     }
 
-    public function increaseUrlCounter(UrlNameCreatedDomainEvent $event)
+    public function increaseUrlCounter(UrlNameCreatedDomainEvent $event): void
     {
         $utmCampign = new UtmCampaign($event->utmCampaignValue());
         $utmCampaignCounter = $this->urlCounterRepository->findByUtmCampaign($utmCampign);
@@ -27,5 +27,7 @@ final class IncreaseUrlCounterListener
         if (null === $utmCampaignCounter) {
             $utmCampaignCounter = new UtmCampaignCounter($utmCampign, new Counter(0));
         }
+
+        $utmCampaignCounter->increase();
     }
 }
