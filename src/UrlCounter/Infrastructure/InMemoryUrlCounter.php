@@ -59,7 +59,7 @@ final class InMemoryUrlCounter implements UrlCounterRepository
     public function findTotalCount(): ?int
     {
         $stmt = $this->connectionDB->pdo()->prepare(
-            'SELECT SUM(count), count FROM urlCounter'
+            'SELECT SUM(count) FROM urlCounter'
         );
         $stmt->execute();
         $count = $stmt->fetchColumn();
