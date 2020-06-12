@@ -12,5 +12,5 @@ interface UrlCounterRepository
 
     public function findUtmCampaigns(): ?array;
 
-    public function findTotalCount(): ?int;
+    public function findTotalCount(): int;
 }
