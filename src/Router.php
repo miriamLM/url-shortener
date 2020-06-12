@@ -62,4 +62,5 @@ if ('/count' === $routeFavorite && 'GET' === $requestMethod) {
     $inMemoryUrlCounter = new InMemoryUrlCounter($connectionDB);
     $utmCampaignCounterSearcher = new UtmCampaignCounterSearcher($inMemoryUrlCounter);
     $controller = new UtmCampaignCounterByClientGetController($utmCampaignCounterSearcher);
+    $controller();
 }
