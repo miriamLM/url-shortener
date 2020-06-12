@@ -19,6 +19,24 @@ final class InMemoryUrlCounter implements UrlCounterRepository
         $this->connectionDB = $connectionDB;
     }
 
+    public function save(UtmCampaignCounter $utmCampaignCounter): void
+    {
+        $utmCampaign = $this->findByUtmCampaign($utmCampaignCounter->utmCampaign());
+        if (null === $utmCampaign) {
+            $stmt = $this->connectionDB->pdo()->prepare(
+                'INSERT IGNORE INTO urlCounter(utmCampaign, count) VALUES (:utmCampaign, :count)'
+            );
+        } else {
+            $stmt = $this->connectionDB->pdo()->prepare(
+                'UPDATE urlCounter SET count = :count WHERE utmCampaign = :utmCampaign'
+            );
+        }
+        $stmt->bindValue("utmCampaign", $utmCampaignCounter->utmCampaign()->value());
+        $stmt->bindValue("count", $utmCampaignCounter->counter()->value());
+
+        $stmt->execute();
+    }
+
     public function findByUtmCampaign(UtmCampaign $utmCampaign): ?UtmCampaignCounter
     {
         $stmt = $this->connectionDB->pdo()->prepare(
@@ -30,11 +48,7 @@ final class InMemoryUrlCounter implements UrlCounterRepository
 
         return $utmCampaignResult === false ? null : new UtmCampaignCounter(
             new UtmCampaign($utmCampaignResult['utmCampaign']),
-            new Counter($utmCampaignResult['count'])
+            new Counter(intval($utmCampaignResult['count']))
         );
-    }
-
-    public function save(UtmCampaignCounter $utmCampaignCounter): void
-    {
     }
 }
