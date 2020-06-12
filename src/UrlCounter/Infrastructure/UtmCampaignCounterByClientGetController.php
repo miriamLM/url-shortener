@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LaSalle\UrlShortener\MiriamLopez\UrlCounter\Infrastructure;
 
+use LaSalle\UrlShortener\MiriamLopez\UrlCounter\ApplicationService\UtmCampaignCounterResponse;
 use LaSalle\UrlShortener\MiriamLopez\UrlCounter\ApplicationService\UtmCampaignCounterSearcher;
 
 final class UtmCampaignCounterByClientGetController
@@ -15,8 +16,23 @@ final class UtmCampaignCounterByClientGetController
         $this->utmCampaignCounterSearcher = $utmCampaignCounterSearcher;
     }
 
-    public function __invoke()
+    public function __invoke(): string
     {
-        $this->utmCampaignCounterSearcher->__invoke();
+        $utmCampaignCounterResponse = $this->utmCampaignCounterSearcher->__invoke();
+        if (null !== $utmCampaignCounterResponse) {
+            return $this->formatResponse($utmCampaignCounterResponse);
+        }
+    }
+
+    private function formatResponse(UtmCampaignCounterResponse $utmCampaignCounterResponse): string
+    {
+        $result = [
+            "total" => $utmCampaignCounterResponse->totalCounter(),
+            "utm_campaigns" => []
+        ];
+        foreach ($utmCampaignCounterResponse->utmCampaignCounter() as $utmCampaign) {
+            array_push($result["utm_campaigns"], [$utmCampaign["utmCampaign"] => intval($utmCampaign["count"])]);
+        }
+        return json_encode($result);
     }
 }
