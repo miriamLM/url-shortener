@@ -52,15 +52,15 @@ if (isset($argv)) {
 
 
 $explodeURL = explode("/", $_SERVER['PHP_SELF']);
-$routeFavorite = $_SERVER['REQUEST_URI'];
+$routeCounter = $_SERVER['REQUEST_URI'];
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 
 header("Content-Type: application/json");
 
 
-if ('/count' === $routeFavorite && 'GET' === $requestMethod) {
+if ('/count' === $routeCounter && 'GET' === $requestMethod) {
     $inMemoryUrlCounter = new InMemoryUrlCounter($connectionDB);
     $utmCampaignCounterSearcher = new UtmCampaignCounterSearcher($inMemoryUrlCounter);
     $controller = new UtmCampaignCounterByClientGetController($utmCampaignCounterSearcher);
-    $controller();
+    echo $controller() ."\n";
 }
