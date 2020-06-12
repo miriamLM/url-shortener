@@ -10,7 +10,9 @@ use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure\InMemoryShortUrl;
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure\SymfonyEventDispatcher;
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure\UrlShortenerCommandController;
 use LaSalle\UrlShortener\MiriamLopez\UrlCounter\ApplicationService\IncreaseUrlCounterListener;
+use LaSalle\UrlShortener\MiriamLopez\UrlCounter\ApplicationService\UtmCampaignCounterSearcher;
 use LaSalle\UrlShortener\MiriamLopez\UrlCounter\Infrastructure\InMemoryUrlCounter;
+use LaSalle\UrlShortener\MiriamLopez\UrlCounter\Infrastructure\UtmCampaignCounterByClientGetController;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
 require_once '../vendor/autoload.php';
@@ -45,4 +47,17 @@ if (isset($argv)) {
     }
 
     return;
+}
+
+
+$explodeURL = explode("/", $_SERVER['PHP_SELF']);
+$routeFavorite = $_SERVER['REQUEST_URI'];
+$requestMethod = $_SERVER['REQUEST_METHOD'];
+
+header("Content-Type: application/json");
+
+
+if ('/count' === $routeFavorite && 'GET' === $requestMethod) {
+    $utmCampaignCounterSearcher = new UtmCampaignCounterSearcher();
+    $controller = new UtmCampaignCounterByClientGetController();
 }
