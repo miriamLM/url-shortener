@@ -17,5 +17,6 @@ final class UtmCampaignCounterByClientGetController
 
     public function __invoke()
     {
+        $this->utmCampaignCounterSearcher->__invoke();
     }
 }
