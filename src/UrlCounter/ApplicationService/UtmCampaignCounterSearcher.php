@@ -15,4 +15,7 @@ final class UtmCampaignCounterSearcher
         $this->urlCounterRepository = $urlCounterRepository;
     }
 
+    public function __invoke()
+    {
+    }
 }
