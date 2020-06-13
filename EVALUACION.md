@@ -88,9 +88,9 @@ Cuáles NO son los objetivos de este documento:
 
 | Concepto           | Peso | ¿Hecho? | Enlace                            |
 | ------------------ | ---- | ------- | --------------------------------- |
-| 👀 `README.md`     | 2,5% | ❌/✅   | [README.md](README.md)            |
-| ✅ `EVALUACION.md` | 2,5% | ❌/✅   | [EVALUACION.md](EVALUACION.md)    |
-| 🔀 Limpieza Git    | 5%   | ❌/✅   | [Listado commits](commits/master) |
+| 👀 `README.md`     | 2,5% |    ✅   | [README.md](README.md)            |
+| ✅ `EVALUACION.md` | 2,5% |    ✅   | [EVALUACION.md](EVALUACION.md)    |
+| 🔀 Limpieza Git    | 5%   |    ✅   | [Listado commits](commits/master) |
 
 ### 💻 Casos de uso (90%)
 
@@ -130,10 +130,10 @@ En este caso, **el enlace deberá apuntar a la clase que represente el punto de 
 
 | Caso de uso | Concepto          | Peso  | ¿Hecho? | Enlace |
 | ----------- | ----------------- | ----- | ------- | ------ |
-| 🔗 Acortar  | 👀 Funcionalidad  | 5,4%  | ❌/✅   |        |
-| 🔗 Acortar  | 👌 Implementación | 21,6% | ❌/✅   |        |
-| 🏪 Guardar  | 👀 Funcionalidad  | 6,3%  | ❌/✅   |        |
-| 🏪 Guardar  | 👌 Implementación | 25,2% | ❌/✅   |        |
-| 🎰 Contador | 👀 Funcionalidad  | 6,3%  | ❌/✅   |        |
-| 🎰 Contador | 👌 Implementación | 25,2% | ❌/✅   |        |
+| 🔗 Acortar  | 👀 Funcionalidad  | 5,4%  |   ✅   | [UrlShortenerCommandController](https://github.com/LaSalleURL/mpwat20-url_shortener-MiriamLopezMartinez/blob/master/src/ShortenUrl/Infrastructure/UrlShortenerCommandController.php)       |
+| 🔗 Acortar  | 👌 Implementación | 21,6% |   ✅   | [BitlyAPIUrlShortenerRepository](https://github.com/LaSalleURL/mpwat20-url_shortener-MiriamLopezMartinez/blob/master/src/ShortenUrl/Infrastructure/BitlyAPIUrlShortenerRepository.php)       |
+| 🏪 Guardar  | 👀 Funcionalidad  | 6,3%  |   ✅   | [UrlShortenerCommandController](https://github.com/LaSalleURL/mpwat20-url_shortener-MiriamLopezMartinez/blob/master/src/ShortenUrl/Infrastructure/UrlShortenerCommandController.php)       |
+| 🏪 Guardar  | 👌 Implementación | 25,2% |   ✅   | [InMemoryShortUrl](https://github.com/LaSalleURL/mpwat20-url_shortener-MiriamLopezMartinez/blob/master/src/ShortenUrl/Infrastructure/InMemoryShortUrl.php)       |
+| 🎰 Contador | 👀 Funcionalidad  | 6,3%  |   ✅   | [UtmCampaignCounterByClientGetController](https://github.com/LaSalleURL/mpwat20-url_shortener-MiriamLopezMartinez/blob/master/src/UrlCounter/Infrastructure/UtmCampaignCounterByClientGetController.php)       |
+| 🎰 Contador | 👌 Implementación | 25,2% |   ✅   | [InMemoryUrlCounter](https://github.com/LaSalleURL/mpwat20-url_shortener-MiriamLopezMartinez/blob/master/src/UrlCounter/Infrastructure/InMemoryUrlCounter.php)       |
 
