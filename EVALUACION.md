@@ -131,9 +131,9 @@ En este caso, **el enlace deberá apuntar a la clase que represente el punto de 
 | Caso de uso | Concepto          | Peso  | ¿Hecho? | Enlace |
 | ----------- | ----------------- | ----- | ------- | ------ |
 | 🔗 Acortar  | 👀 Funcionalidad  | 5,4%  |   ✅   | [UrlShortenerCommandController](src/ShortenUrl/Infrastructure/UrlShortenerCommandController.php)       |
-| 🔗 Acortar  | 👌 Implementación | 21,6% |   ✅   | [BitlyAPIUrlShortenerRepository](https://github.com/LaSalleURL/mpwat20-url_shortener-MiriamLopezMartinez/blob/master/src/ShortenUrl/Infrastructure/BitlyAPIUrlShortenerRepository.php)       |
-| 🏪 Guardar  | 👀 Funcionalidad  | 6,3%  |   ✅   | [UrlShortenerCommandController](https://github.com/LaSalleURL/mpwat20-url_shortener-MiriamLopezMartinez/blob/master/src/ShortenUrl/Infrastructure/UrlShortenerCommandController.php)       |
-| 🏪 Guardar  | 👌 Implementación | 25,2% |   ✅   | [InMemoryShortUrl](https://github.com/LaSalleURL/mpwat20-url_shortener-MiriamLopezMartinez/blob/master/src/ShortenUrl/Infrastructure/InMemoryShortUrl.php)       |
-| 🎰 Contador | 👀 Funcionalidad  | 6,3%  |   ✅   | [UtmCampaignCounterByClientGetController](https://github.com/LaSalleURL/mpwat20-url_shortener-MiriamLopezMartinez/blob/master/src/UrlCounter/Infrastructure/UtmCampaignCounterByClientGetController.php)       |
-| 🎰 Contador | 👌 Implementación | 25,2% |   ✅   | [InMemoryUrlCounter](https://github.com/LaSalleURL/mpwat20-url_shortener-MiriamLopezMartinez/blob/master/src/UrlCounter/Infrastructure/InMemoryUrlCounter.php)       |
+| 🔗 Acortar  | 👌 Implementación | 21,6% |   ✅   | [BitlyAPIUrlShortenerRepository](src/ShortenUrl/Infrastructure/BitlyAPIUrlShortenerRepository.php)       |
+| 🏪 Guardar  | 👀 Funcionalidad  | 6,3%  |   ✅   | [UrlShortenerCommandController](src/ShortenUrl/Infrastructure/UrlShortenerCommandController.php)       |
+| 🏪 Guardar  | 👌 Implementación | 25,2% |   ✅   | [InMemoryShortUrl](src/ShortenUrl/Infrastructure/InMemoryShortUrl.php)       |
+| 🎰 Contador | 👀 Funcionalidad  | 6,3%  |   ✅   | [UtmCampaignCounterByClientGetController](src/UrlCounter/Infrastructure/UtmCampaignCounterByClientGetController.php)       |
+| 🎰 Contador | 👌 Implementación | 25,2% |   ✅   | [InMemoryUrlCounter](src/UrlCounter/Infrastructure/InMemoryUrlCounter.php)       |
 
