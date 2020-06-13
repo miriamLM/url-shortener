@@ -90,7 +90,7 @@ Cuáles NO son los objetivos de este documento:
 | ------------------ | ---- | ------- | --------------------------------- |
 | 👀 `README.md`     | 2,5% |    ✅   | [README.md](README.md)            |
 | ✅ `EVALUACION.md` | 2,5% |    ✅   | [EVALUACION.md](EVALUACION.md)    |
-| 🔀 Limpieza Git    | 5%   |    ✅   | [Listado commits](commits/master) |
+| 🔀 Limpieza Git    | 5%   |    ✅   | [Listado commits](https://github.com/LaSalleURL/mpwat20-url_shortener-MiriamLopezMartinez/commits/master) |
 
 ### 💻 Casos de uso (90%)
 
@@ -130,7 +130,7 @@ En este caso, **el enlace deberá apuntar a la clase que represente el punto de 
 
 | Caso de uso | Concepto          | Peso  | ¿Hecho? | Enlace |
 | ----------- | ----------------- | ----- | ------- | ------ |
-| 🔗 Acortar  | 👀 Funcionalidad  | 5,4%  |   ✅   | [UrlShortenerCommandController](https://github.com/LaSalleURL/mpwat20-url_shortener-MiriamLopezMartinez/blob/master/src/ShortenUrl/Infrastructure/UrlShortenerCommandController.php)       |
+| 🔗 Acortar  | 👀 Funcionalidad  | 5,4%  |   ✅   | [UrlShortenerCommandController](src/ShortenUrl/Infrastructure/UrlShortenerCommandController.php)       |
 | 🔗 Acortar  | 👌 Implementación | 21,6% |   ✅   | [BitlyAPIUrlShortenerRepository](https://github.com/LaSalleURL/mpwat20-url_shortener-MiriamLopezMartinez/blob/master/src/ShortenUrl/Infrastructure/BitlyAPIUrlShortenerRepository.php)       |
 | 🏪 Guardar  | 👀 Funcionalidad  | 6,3%  |   ✅   | [UrlShortenerCommandController](https://github.com/LaSalleURL/mpwat20-url_shortener-MiriamLopezMartinez/blob/master/src/ShortenUrl/Infrastructure/UrlShortenerCommandController.php)       |
 | 🏪 Guardar  | 👌 Implementación | 25,2% |   ✅   | [InMemoryShortUrl](https://github.com/LaSalleURL/mpwat20-url_shortener-MiriamLopezMartinez/blob/master/src/ShortenUrl/Infrastructure/InMemoryShortUrl.php)       |
