@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace LaSalle\UrlShortener\MiriamLopez\UrlCounter\ApplicationService;
 
-use LaSalle\UrlShortener\MiriamLopez\UrlCounter\Domain\Counter;
-
 final class UtmCampaignCounterResponse
 {
     private int $totalCounter;
