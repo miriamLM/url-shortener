@@ -90,7 +90,7 @@ Cuáles NO son los objetivos de este documento:
 | ------------------ | ---- | ------- | --------------------------------- |
 | 👀 `README.md`     | 2,5% |    ✅   | [README.md](README.md)            |
 | ✅ `EVALUACION.md` | 2,5% |    ✅   | [EVALUACION.md](EVALUACION.md)    |
-| 🔀 Limpieza Git    | 5%   |    ✅   | [Listado commits](/commits/master) |
+| 🔀 Limpieza Git    | 5%   |    ✅   | [Listado commits](https://github.com/LaSalleURL/mpwat20-url_shortener-MiriamLopezMartinez/commits/master) |
 
 ### 💻 Casos de uso (90%)
 
