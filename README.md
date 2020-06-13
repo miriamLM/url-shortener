@@ -17,13 +17,51 @@ Examples:
 - `php Router.php 'https://www.google.com'`
 - `php Router.php 'https://drive.google.com?utm_source=linkedin&utm_medium=social&utm_campaign=get-drive&utm_content=get'`
 
+- Returns the shortened url
+
+Examples:
+- `https://bit.ly/2UhPMOB`
+- `https://bit.ly/2ARjiUf`
+
+
+## HTTP usage
+
+`cd src`
+
+- Start server:
+
+`php -S localhost:8000 Router.php`
+
+- Get request of utm_campaign counter: http://localhost:8000/count
+
+```
+curl --location --request GET 'http://localhost:8000/count'
+```
+
+- Returns json of the total counter of the shortened links and if they have utm_campaign, their counter also.
+
+Example:
+```json
+{
+  "total": 6,
+  "utm_campaigns": [
+    {
+      "get-drive": 2
+    },
+    {
+      "get-drive-🤯": 1
+    }
+  ]
+}
+```
+
 ### Create database
 
 ```SQL
 CREATE DATABASE `url_shortener` DEFAULT CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 ```
 
-### Create table
+### Create tables
 
 ```SQL
 use `url_shortener`;
@@ -35,6 +73,13 @@ CREATE TABLE `shortUrl` (
     `utmCampaign` VARCHAR(255),
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+
+CREATE TABLE `urlCounter` ( 
+    `utmCampaign` VARCHAR(255),
+    `count` INT NOT NULL,
+    PRIMARY KEY (`utmCampaign`)
+) ENGINE=InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+
 ```
 
 ### Configuration file to connect to database
