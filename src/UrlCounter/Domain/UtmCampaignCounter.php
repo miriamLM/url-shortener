@@ -25,13 +25,13 @@ final class UtmCampaignCounter
         return $this->counter;
     }
 
-    private function count(): Counter
-    {
-        return new Counter($this->counter->value());
-    }
-
     public function increase(): self
     {
         return new self($this->utmCampaign, $this->count()->increment());
+    }
+
+    private function count(): Counter
+    {
+        return new Counter($this->counter->value());
     }
 }
