@@ -17,6 +17,19 @@ Examples:
 - `php Router.php 'https://www.google.com'`
 - `php Router.php 'https://drive.google.com?utm_source=linkedin&utm_medium=social&utm_campaign=get-drive&utm_content=get'`
 
+## HTTP usage
+
+`cd src`
+
+- Start server:
+
+`php -S localhost:8000 Router.php`
+
+- Get request of utm_campaign counter: http://localhost:8000/count
+
+```
+curl --location --request GET 'http://localhost:8000/count'
+```
 
 ### Create database
 
