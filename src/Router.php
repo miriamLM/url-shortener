@@ -22,20 +22,13 @@ $connectionDB = new UrlShortenerDBConnection();
 
 if (isset($argv)) {
     try {
+        include("UrlCounter/Public/index.php");
+
         $url = count($argv) === 1 ? "" : $argv[1];
 
         $urlShortenerRepository = new BitlyAPIUrlShortenerRepository();
 
         $inMemoryShortUrl = new InMemoryShortUrl($connectionDB, $urlShortenerRepository);
-
-        $dispatcher = new EventDispatcher();
-
-        $inMemoryUrlCounter = new InMemoryUrlCounter($connectionDB);
-
-        $eventDispatcher = new SymfonyEventDispatcher($dispatcher);
-
-        $listener = new IncreaseUrlCounterListener($inMemoryUrlCounter);
-        $dispatcher->addListener('url.name.created.event', array($listener, 'increaseUrlCounter'));
 
         $urlShortenService = new UrlShortenService($inMemoryShortUrl, $eventDispatcher);
 
@@ -57,10 +50,11 @@ $requestMethod = $_SERVER['REQUEST_METHOD'];
 
 header("Content-Type: application/json");
 
-
 if ('/count' === $routeCounter && 'GET' === $requestMethod) {
     $inMemoryUrlCounter = new InMemoryUrlCounter($connectionDB);
+
     $utmCampaignCounterSearcher = new UtmCampaignCounterSearcher($inMemoryUrlCounter);
+
     $controller = new UtmCampaignCounterByClientGetController($utmCampaignCounterSearcher);
-    echo $controller() ."\n";
+    echo $controller() . "\n";
 }
