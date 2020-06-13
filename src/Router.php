@@ -3,18 +3,16 @@
 declare(strict_types=1);
 
 use LaSalle\UrlShortener\MiriamLopez\Shared\Infrastructure\Exceptions\ExceptionToHumanMessage;
-use LaSalle\UrlShortener\MiriamLopez\Shared\Infrastructure\UrlShortenerDBConnection;
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\ApplicationService\UrlShortenService;
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure\BitlyAPIUrlShortenerRepository;
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure\InMemoryShortUrl;
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure\UrlShortenerCommandController;
 use LaSalle\UrlShortener\MiriamLopez\UrlCounter\ApplicationService\UtmCampaignCounterSearcher;
-use LaSalle\UrlShortener\MiriamLopez\UrlCounter\Infrastructure\InMemoryUrlCounter;
 use LaSalle\UrlShortener\MiriamLopez\UrlCounter\Infrastructure\UtmCampaignCounterByClientGetController;
 
 require_once '../vendor/autoload.php';
 
-$connectionDB = new UrlShortenerDBConnection();
+include("Shared/Public/index.php");
 
 if (isset($argv)) {
     try {
@@ -47,8 +45,6 @@ $requestMethod = $_SERVER['REQUEST_METHOD'];
 header("Content-Type: application/json");
 
 if ('/count' === $routeCounter && 'GET' === $requestMethod) {
-    $inMemoryUrlCounter = new InMemoryUrlCounter($connectionDB);
-
     $utmCampaignCounterSearcher = new UtmCampaignCounterSearcher($inMemoryUrlCounter);
 
     $controller = new UtmCampaignCounterByClientGetController($utmCampaignCounterSearcher);
