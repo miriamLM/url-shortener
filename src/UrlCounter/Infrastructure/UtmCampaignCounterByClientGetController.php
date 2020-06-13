@@ -30,8 +30,8 @@ final class UtmCampaignCounterByClientGetController
             "utm_campaigns" => []
         ];
 
-        foreach ($utmCampaignCounterResponse->utmCampaignCounter() as $utmCampaign) {
-            array_push($result["utm_campaigns"], [$utmCampaign["utmCampaign"] => intval($utmCampaign["count"])]);
+        foreach ($utmCampaignCounterResponse->utmCampaignCounter() as $utmCampaign => $value) {
+            array_push($result["utm_campaigns"], [$value["utmCampaign"] => intval($value["count"])]);
         }
 
         return json_encode($result);
