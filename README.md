@@ -13,15 +13,14 @@
 
 `php Router.php 'url'`
 
-Examples:
-- `php Router.php 'https://www.google.com'`
-- `php Router.php 'https://drive.google.com?utm_source=linkedin&utm_medium=social&utm_campaign=get-drive&utm_content=get'`
+- Examples:
+    - `php Router.php 'https://www.google.com'`
+    - `php Router.php 'https://drive.google.com?utm_source=linkedin&utm_medium=social&utm_campaign=get-drive&utm_content=get'`
 
-- Returns the shortened url
-
-Examples:
-- `https://bit.ly/2UhPMOB`
-- `https://bit.ly/2ARjiUf`
+Returns the shortened url
+- Examples:
+    - `https://bit.ly/2UhPMOB`
+    - `https://bit.ly/2ARjiUf`
 
 
 ## HTTP usage
@@ -40,7 +39,7 @@ curl --location --request GET 'http://localhost:8000/count'
 
 - Returns json of the total counter of the shortened links and if they have utm_campaign, their counter also.
 
-Example:
+    - Example:
 ```json
 {
   "total": 6,
