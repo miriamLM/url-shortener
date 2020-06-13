@@ -13,7 +13,7 @@ final class Counter
         $this->count = $count;
     }
 
-    public function value() :int
+    public function value(): int
     {
         return $this->count;
     }
