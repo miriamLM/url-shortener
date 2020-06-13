@@ -53,4 +53,6 @@ if ('/count' === $routeCounter && 'GET' === $requestMethod) {
 
     $controller = new UtmCampaignCounterByClientGetController($utmCampaignCounterSearcher);
     echo $controller() . "\n";
+} else {
+    http_response_code(404);
 }
