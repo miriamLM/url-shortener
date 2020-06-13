@@ -26,7 +26,9 @@
     "require": {
         "php": ">=7.4",
         "guzzlehttp/guzzle": "~6.0",
-        "ext-json": "*"
+        "ext-json": "*",
+        "ext-PDO": "^7.4",
+        "vlucas/phpdotenv": "4.1"
     },
     "require-dev": {
         "jakub-onderka/php-parallel-lint": "^1.0",
