@@ -52,7 +52,7 @@ final class InMemoryUrlCounter implements UrlCounterRepository
 
         return $utmCampaignResult === false ? null : new UtmCampaignCounter(
             new UtmCampaign($utmCampaignResult['utmCampaign']),
-            new Counter(intval($utmCampaignResult['count']))
+            new Counter((int)$utmCampaignResult['count'])
         );
     }
 
@@ -75,6 +75,6 @@ final class InMemoryUrlCounter implements UrlCounterRepository
 
         $count = $stmt->fetchColumn();
 
-        return intval($count);
+        return (int)$count;
     }
 }
