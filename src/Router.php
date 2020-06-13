@@ -7,14 +7,10 @@ use LaSalle\UrlShortener\MiriamLopez\Shared\Infrastructure\UrlShortenerDBConnect
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\ApplicationService\UrlShortenService;
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure\BitlyAPIUrlShortenerRepository;
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure\InMemoryShortUrl;
-use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure\SymfonyEventDispatcher;
 use LaSalle\UrlShortener\MiriamLopez\ShortenUrl\Infrastructure\UrlShortenerCommandController;
-use LaSalle\UrlShortener\MiriamLopez\UrlCounter\ApplicationService\IncreaseUrlCounterListener;
 use LaSalle\UrlShortener\MiriamLopez\UrlCounter\ApplicationService\UtmCampaignCounterSearcher;
-use LaSalle\UrlShortener\MiriamLopez\UrlCounter\Domain\UrlCounterRepository;
 use LaSalle\UrlShortener\MiriamLopez\UrlCounter\Infrastructure\InMemoryUrlCounter;
 use LaSalle\UrlShortener\MiriamLopez\UrlCounter\Infrastructure\UtmCampaignCounterByClientGetController;
-use Symfony\Component\EventDispatcher\EventDispatcher;
 
 require_once '../vendor/autoload.php';
 
